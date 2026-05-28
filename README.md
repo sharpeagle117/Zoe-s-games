@@ -5,7 +5,7 @@
 To design, deploy, and manage an isolated virtual network environment simulating a small enterprise network architecture. This project demonstrates practical skills in hypervisor networking, firewall configuration, secure system deployment, and network traffic routing.
 
 ## Network Topology
-The lab environment is hosted on a Windows 11 machine using a Type 2 hypervisor. It consists of a virtualized firewall acting as the network gateway and a client machine operating within an isolated internal network.
+The lab environment is hosted on a Windows 11 machine using a Type 2 hypervisor. It consists of a virtualized firewall namely pfSense acting as the network gateway and a client machine Ubuntu VM operating within an isolated internal network.
 
 *   **Host Machine:** Windows 11
 *   **Hypervisor:** VirtualBox
