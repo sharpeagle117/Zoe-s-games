@@ -31,8 +31,7 @@ The lab environment is hosted on a Windows 11 machine using a Type 2 hypervisor.
 ## Challenges & Solutions
 **Cryptographic Integrity Checks:** Prior to installing the virtual machines, I verified the SHA256 hashes of the downloaded ISO files. While automating the comparison using PowerShell, I encountered an issue where the `[Microsoft.Powershell.Utility.FileHash]` object threw an error when attempting to use string manipulation methods on it. I resolved this by correctly extracting the `.Hash` property from the object before comparing the values, successfully validating the files were uncorrupted.
 
-**Ubuntu VM Installation:*
-Challenge: While attempting to install an Ubuntu VM in VirtualBox, the application hung on launch, showing only the menu bar with no boot sequence. I verified that hardware virtualization was enabled in Windows Task Manager and confirmed the ISO installation media was correctly mounted, but the issue persisted.
+**Ubuntu VM Installation:** While attempting to install an Ubuntu VM in VirtualBox, the application hung on launch, showing only the menu bar with no boot sequence. I verified that hardware virtualization was enabled in Windows Task Manager and confirmed the ISO installation media was correctly mounted, but the issue persisted.
 Solution: The root cause was a conflict between VirtualBox and the host OS security layers. Disabling Memory Integrity (Core Isolation) in Windows 11 and restarting the host resolved the hypervisor clash. The Ubuntu installation proceeded smoothly thereafter.
 
 **Environment Optimization:** Adjusting to the default virtualized environments required optimizing the shell console sizing for the firewall and configuring guest additions to ensure the Ubuntu client display scaled correctly for efficient workflow management.
