@@ -1,9 +1,34 @@
 # Zoe-s-games
-# Virtual Network Security Lab
+# Enterprise-Grade Virtual Network Security Lab
 
-## Objective
-To design, deploy, and manage an isolated virtual network environment simulating a small enterprise network architecture. This project demonstrates practical skills in hypervisor networking, firewall configuration, secure system deployment, and network traffic routing.
+## Project Overview
+This project demonstrates the design, deployment, and configuration of a secure, segmented virtual network. Built entirely within a hypervisor environment, it utilizes a dedicated gateway firewall to enforce strict access controls and monitor traffic flowing to and from an isolated internal sandbox. It demonstrates practical skills in hypervisor networking, firewall configuration, secure system deployment, and network traffic routing.
 
+## Architecture & Topology
+The network relies on a strict perimeter defense model. All client traffic is routed through the central firewall, which acts as the default gateway and primary chokepoint for packet analysis, access control lists (ACLs), and security testing.
+
+```mermaid
+graph TD
+    Host[Host System] --> VBox[VirtualBox Hypervisor]
+    
+    subgraph Isolated Sandbox Environment
+        VBox --> WAN((WAN / External))
+        
+        WAN -->|NAT Adapter| pfSense[pfSense Gateway Firewall]
+        
+        pfSense -->|Internal Adapter| LAN((Lab-Network Switch))
+        
+        LAN -->|Internal Adapter| Ubuntu[Ubuntu Test Client]
+        LAN -->|Internal Adapter| Kali[Kali Linux Security Tool]
+    end
+    
+    classDef firewall fill:#e74c3c,stroke:#c0392b,color:#fff;
+    classDef client fill:#3498db,stroke:#2980b9,color:#fff;
+    classDef network fill:#2ecc71,stroke:#27ae60,color:#fff;
+    
+    class pfSense firewall;
+    class Ubuntu,Kali client;
+    class WAN,LAN network;
 ## Network Topology
 The lab environment is hosted on a Windows 11 machine using a Type 2 hypervisor. It consists of a virtualized firewall namely pfSense acting as the network gateway and a client machine Ubuntu VM operating within an isolated internal network.
 
