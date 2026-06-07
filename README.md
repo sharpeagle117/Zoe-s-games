@@ -5,39 +5,16 @@
 This project demonstrates the design, deployment, and configuration of a secure, segmented virtual network. Built entirely within a hypervisor environment, it utilizes a dedicated gateway firewall to enforce strict access controls and monitor traffic flowing to and from an isolated internal sandbox. It demonstrates practical skills in hypervisor networking, firewall configuration, secure system deployment, and network traffic routing.
 
 ## Architecture & Topology
-The network relies on a strict perimeter defense model. All client traffic is routed through the central firewall, which acts as the default gateway and primary chokepoint for packet analysis, access control lists (ACLs), and security testing.
-
-```mermaid
-graph TD
-    Host[Host System] --> VBox[VirtualBox Hypervisor]
-    
-    subgraph Isolated Sandbox Environment
-        VBox --> WAN((WAN / External))
-        
-        WAN -->|NAT Adapter| pfSense[pfSense Gateway Firewall]
-        
-        pfSense -->|Internal Adapter| LAN((Lab-Network Switch))
-        
-        LAN -->|Internal Adapter| Ubuntu[Ubuntu Test Client]
-        LAN -->|Internal Adapter| Kali[Kali Linux Security Tool]
-    end
-    
-    classDef firewall fill:#e74c3c,stroke:#c0392b,color:#fff;
-    classDef client fill:#3498db,stroke:#2980b9,color:#fff;
-    classDef network fill:#2ecc71,stroke:#27ae60,color:#fff;
-    
-    class pfSense firewall;
-    class Ubuntu,Kali client;
-    class WAN,LAN network;
-## Network Topology
-The lab environment is hosted on a Windows 11 machine using a Type 2 hypervisor. It consists of a virtualized firewall namely pfSense acting as the network gateway and a client machine Ubuntu VM operating within an isolated internal network.
+The network relies on a strict perimeter defense model. It is hosted on a Windows 11 machine using a Type 2 hypervisor. All client traffic is routed through the central firewall, which acts as the default gateway and primary chokepoint for packet analysis, access control lists (ACLs), and security testing.
 
 *   **Host Machine:** Windows 11
 *   **Hypervisor:** VirtualBox
 *   **Firewall / Gateway:** pfSense
     *   Adapter 1 (WAN): NAT (Simulating external internet access)
     *   Adapter 2 (LAN): Internal Network (Serving the isolated lab environment)
-*   **Client Machine:** Ubuntu Linux
+*   **Client Machine:** Ubuntu
+    *   Adapter 1: Internal Network (Routing all traffic through the pfSense gateway)
+*   **Client Machine:** Kali Linux
     *   Adapter 1: Internal Network (Routing all traffic through the pfSense gateway)
 
 ## Skills Demonstrated
@@ -54,7 +31,7 @@ The lab environment is hosted on a Windows 11 machine using a Type 2 hypervisor.
 *   **Host OS PowerShell** (for integrity verification)
 
 ## Challenges & Solutions
-**Cryptographic Integrity Checks:** Prior to installing the virtual machines, I verified the SHA256 hashes of the downloaded ISO files. While automating the comparison using PowerShell, I encountered an issue where the `[Microsoft.Powershell.Utility.FileHash]` object threw an error when attempting to use string manipulation methods on it. I resolved this by correctly extracting the `.Hash` property from the object before comparing the values, successfully validating the files were uncorrupted.
+**Cryptographic Integrity Checks:** Prior to installing the virtual machines, I verified the SHA256 hashes of the downloaded ISO files. While automating the comparison using PowerShell, I encountered an issue where the Microsoft.Powershell.Utility.FileHash object threw an error when attempting to use string manipulation methods on it. I resolved this by correctly extracting some spaces from the object before comparing the values, successfully validating the files were uncorrupted.
 
 **Ubuntu VM Installation:** While attempting to install an Ubuntu VM in VirtualBox, the application hung on launch, showing only the menu bar with no boot sequence. I verified that hardware virtualization was enabled in Windows Task Manager and confirmed the ISO installation media was correctly mounted, but the issue persisted.
 Solution: The root cause was a conflict between VirtualBox and the host OS security layers. Disabling Memory Integrity (Core Isolation) in Windows 11 and restarting the host resolved the hypervisor clash. The Ubuntu installation proceeded smoothly thereafter.
