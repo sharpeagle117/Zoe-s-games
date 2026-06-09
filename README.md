@@ -16,7 +16,7 @@ The network relies on a strict perimeter defense model. It is hosted on a Window
     *   Adapter 1: Internal Network (Routing all traffic through the pfSense gateway)
 *   **Client Machine:** Kali Linux
     *   Adapter 1: Internal Network (Routing all traffic through the pfSense gateway)
-![Network Topology Diagram](NetworkTopology.drawio.png)
+![Network Topology Diagram](NetworkTopology.drawio)
 
 ## Skills Demonstrated
 *   **Hypervisor Administration:** Configuring VirtualBox network adapters (NAT and Internal Networks) to enforce traffic isolation.
