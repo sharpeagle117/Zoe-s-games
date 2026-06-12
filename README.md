@@ -43,7 +43,7 @@ Solution: The root cause was a conflict between VirtualBox and the host OS secur
 
 ### 1. Virtual Machine Network Configuration
 *This image demonstrates the VirtualBox adapter settings, ensuring the client machines are strictly isolated to the Internal Network and must route through the firewall.*
-![VirtualBox Network Settings](link-to-your-image.jpg)
+![VirtualBox Network Settings](/images/NetworkSettingsidebyside1.png)
 
 ### 2. Pre-Deployment Data Integrity Verification
 *Using PowerShell to verify the cryptographic hash of the downloaded ISO files before installation, ensuring no file corruption or tampering.*
