@@ -42,7 +42,7 @@ Solution: The root cause was a conflict between VirtualBox and the host OS secur
 ## Project Documentation
 
 ### 1. Virtual Machine Network Configuration
-*This image demonstrates the VirtualBox adapter settings, ensuring the client machine is strictly isolated to the Internal Network and must route through the firewall.*
+*This image demonstrates the VirtualBox adapter settings, ensuring the client machines are strictly isolated to the Internal Network and must route through the firewall.*
 ![VirtualBox Network Settings](link-to-your-image.jpg)
 
 ### 2. Pre-Deployment Data Integrity Verification
