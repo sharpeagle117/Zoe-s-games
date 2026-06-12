@@ -32,7 +32,7 @@ The network relies on a strict perimeter defense model. It is hosted on a Window
 *   **Host OS PowerShell** (for integrity verification)
 
 ## Challenges & Solutions
-**Cryptographic Integrity Checks:** Prior to installing the virtual machines, I verified the SHA256 hashes of the downloaded ISO files. While automating the comparison using PowerShell, I encountered an issue where the Microsoft.Powershell.Utility.FileHash object threw an error when attempting to use string manipulation methods on it. I resolved this by correctly extracting some hard-to-see spaces from the object before comparing the values, successfully validating the files were uncorrupted.
+**Cryptographic Integrity Checks:** Prior to installing the virtual machines, I verified the SHA256 hashes of the downloaded ISO files. While automating the comparison using PowerShell, I encountered an issue where the Microsoft.Powershell.Utility.FileHash object threw an error when attempting to use string manipulation methods on it. I resolved this by correctly extracting some foreign spaces from the object before comparing the values, successfully validating the files were uncorrupted.
 
 **Ubuntu VM Installation:** While attempting to install an Ubuntu VM in VirtualBox, the application hung on launch, showing only the menu bar with no boot sequence. I verified that hardware virtualization was enabled in Windows Task Manager and confirmed the ISO installation media was correctly mounted, but the issue persisted.
 Solution: The root cause was a conflict between VirtualBox and the host OS security layers. Disabling Memory Integrity (Core Isolation) in Windows 11 and restarting the host resolved the hypervisor clash. The Ubuntu installation proceeded smoothly thereafter.
