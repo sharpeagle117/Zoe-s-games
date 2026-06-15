@@ -47,7 +47,7 @@ Solution: The root cause was a conflict between VirtualBox and the host OS secur
 
 ### 2. Pre-Deployment Data Integrity Verification
 *Using PowerShell to verify the cryptographic hash of the downloaded ISO files before installation, ensuring no file corruption or tampering.*
-![PowerShell Hash Check](link-to-your-image.jpg)
+![PowerShell Hash Check](/images/HashcomparisonUbuntu.png)
 
 ### 3. Firewall Interface Dashboard
 *The firewall web interface showing the active WAN and LAN interfaces, confirming successful deployment and IP assignment.*
