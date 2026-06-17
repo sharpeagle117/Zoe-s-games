@@ -51,7 +51,7 @@ Solution: The root cause was a conflict between VirtualBox and the host OS secur
 
 ### 3. Firewall Interface Dashboard
 *The firewall web interface showing the active WAN and LAN interfaces, confirming successful deployment and IP assignment.*
-![Firewall Dashboard](link-to-your-image.jpg)
+![Firewall Dashboard](/images/pfsensedashboard.png)
 
 ### 4. Client Connectivity & Routing
 *The Ubuntu client terminal successfully pinging an external IP address, proving that NAT, DNS, and internal routing through the firewall are functioning correctly.*
