@@ -39,6 +39,8 @@ Solution: The root cause was a conflict between VirtualBox and the host OS secur
 
 **Environment Optimization:** Adjusting to the default virtualized environments required optimizing the shell console sizing for the firewall and configuring guest additions to ensure the Ubuntu client display scaled correctly for efficient workflow management.
 
+**Network Separation:** Re-configured the hypervisor and firewall to creat the network applying defence-in-depth strategy, making the attacker difficult to move laterally and allowing firewall to function normal as to block the attack.
+
 ## Project Documentation
 
 ### 1. Virtual Machine Network Configuration
