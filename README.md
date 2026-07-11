@@ -11,23 +11,24 @@ The network relies on a strict perimeter defense model. It is hosted on a Window
 *   **Hypervisor:** VirtualBox
 *   **Firewall / Gateway:** pfSense
     *   Adapter 1 (WAN): NAT (Simulating external internet access)
-    *   Adapter 2 (LAN): Internal Network (Serving the isolated lab environment)
-*   **Client Machine:** Ubuntu
-    *   Adapter 1: Internal Network (Routing all traffic through the pfSense gateway)
-*   **Client Machine:** Kali Linux
-    *   Adapter 1: Internal Network (Routing all traffic through the pfSense gateway)
+    *   Adapter 2 (LAN): Internal Network (Serving the victim machine environment)
+    *   Adapter 3 (LANKALINETWORK): Internal Network (Serving the attacker machine environment)
+*   **Victim Machine:** Ubuntu
+    *   Adapter 2: Internal Network (Routing all traffic through the pfSense gateway)
+*   **Attacker Machine:** Kali Linux
+    *   Adapter 3: Internal Network (Routing all traffic through the pfSense gateway)
 ![Network Topology Diagram](/images/NetworkTopology.drawio.png)
 
 ## Skills Demonstrated
 *   **Hypervisor Administration:** Configuring VirtualBox network adapters (NAT and Internal Networks) to enforce traffic isolation.
 *   **Firewall Deployment:** Installing and configuring pfSense, establishing WAN/LAN interfaces, and managing the web GUI.
-*   **Network Services:** Configuring DHCP and NAT to provide IP addressing and external connectivity to the internal client.
+*   **Network Services:** Configuring DHCP and NAT to provide IP addressing and external connectivity to the internal clients.
 *   **Data Integrity & Security:** Performing cryptographic hash verifications on OS ISO files prior to installation via command-line tools.
 *   **System Administration:** Deploying and configuring Linux and FreeBSD-based operating systems, including display and console optimizations.
 
 ## Tools & Technologies
-*   **VirtualBox TypeII Hypervisor**
-*   **pfSense Firewall ACLs**
+*   **VirtualBox TypeII Hypervisor and Configurations**
+*   **pfSense Firewall ACLs and Web GUI**
 *   **Ubuntu Linux CLI**
 *   **Host OS PowerShell** (for integrity verification)
 
@@ -39,7 +40,9 @@ Solution: The root cause was a conflict between VirtualBox and the host OS secur
 
 **Environment Optimization:** Adjusting to the default virtualized environments required optimizing the shell console sizing for the firewall and configuring guest additions to ensure the Ubuntu client display scaled correctly for efficient workflow management.
 
-**Network Separation:** Re-configured the hypervisor and firewall to creat the network applying defence-in-depth strategy, making the attacker difficult to move laterally and allowing firewall to function normal as to block the attack.
+**Network Separation:** While attempting a rconnaissance action against the Ubuntu environment, there is no any trace of detected action in firewall dspite the pre-configugring of the ACL.
+
+Solution: Re-configured the hypervisor and firewall to creat the pfsense centered star-topology-network.  Applying defence-in-depth strategy, I forced the attacker traffic to go through the firewall, enabling the blocking and logging of the attacker's actions and making the attacker difficult to move laterally.
 
 ## Project Documentation
 
