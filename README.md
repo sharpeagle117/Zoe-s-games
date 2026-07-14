@@ -60,4 +60,4 @@ Solution: Re-configured the hypervisor and firewall to creat the pfsense centere
 
 ### 4. Client Connectivity & Routing
 *The Ubuntu client terminal successfully pinging an external IP address, proving that NAT, DNS, and internal routing through the firewall are functioning correctly.*
-![Ubuntu Ping Test](link-to-your-image.jpg)
+![Ubuntu Ping Test](/images/UbuntuPingTest.png)
