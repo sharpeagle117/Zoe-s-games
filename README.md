@@ -1,5 +1,5 @@
-# Virtual-Hypervisor-Security-Lab
-# /Enterprise-Grade Virtual Network Security Lab
+# Virtual-Hypervisor-Security-Lab //
+# Enterprise-Grade Virtual Network Security Lab
 
 ## Project Overview
 This project demonstrates the design, deployment, and configuration of a secure, segmented virtual network. Built entirely within a hypervisor environment, it utilizes a dedicated gateway firewall to enforce strict access controls and monitor traffic flowing to and from an isolated internal sandbox. It demonstrates practical skills in hypervisor networking, firewall configuration, secure system deployment, and network traffic routing.
